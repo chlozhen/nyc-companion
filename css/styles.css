@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+#main-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#bars {
+  flex-grow: 1;
+  justify-content: end;
+  display: flex;
+}
+
+#bars {
+  display: inline-block;
+  font-size: .9rem;
+}
+
+#map {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  width: 100%;
+}
+
+nav {
+    padding: 1rem;
+    display: flex;
+    z-index: 10;
+    background: #6869a3;
+    /* border-bottom: 1px solid #8c2d04; */
+}
+
+.sidebar {
+  position: absolute;
+  width: 25%;
+  z-index: 10;
+  background: #6869a3;
+  padding: 20px;
+  top: 60px;
+  margin-top: 15px;
+  margin-left: 15px;
+  border: 200px;
+  border-radius: 20px;
+  overflow: scroll;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #d5eafb;
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #eef3fb;
+}
+
+
+
+
+
+/* Design pop up description table*/
+.mapboxgl-popup-content {
+  display: inline-block;
+  background-color:#e0e9f6;
+}
+
+/* Table Design for location pop-up text */
+.key-value-table {
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.key-value-table td {
+  padding: 2px 8px;
+  border: 1px solid#ffffff;
+  background-color:#eef3fb;
+}
+
+.key-value-table td.key {
+  font-weight: bold;
+  color: #444;
+  background-color: #d5eafb;
+}
+
+.key-value-table td.value {
+  color: #0a0808;
+}
+
+
+
+
+
+/* Design for Toggle Buttons */
+#menu {
+  background: #d5eafb;
+  position: absolute;
+  z-index: 1;
+  top: 75px;
+  right: 10px;
+  border-radius: 3px;
+  width: 120px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+#menu a {
+  font-size: 13px;
+  color: #404040;
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding: 8px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+#menu a:last-child {
+  border: none;
+}
+
+#menu a:hover {
+  background-color: #eef3fb;
+  color: #404040;
+}
+
+#menu a.active {
+  background-color: #6869a3;
+  color: #eef3fb;
+}
+
+#menu a.active:hover {
+  background: #3e407c;
+}
+
+
