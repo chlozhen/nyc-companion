@@ -3,10 +3,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBze
 /////////////////////////////////
 // Add global variables - map, types of data
 const NYC_COORDINATES = [-73.99096559187603, 40.73421219946701]
-const bounds = [
-    [-74.29153354391028, 40.49823166182588], // Southwest coordinates
-    [-73.63549013247152, 40.936286823381806] // Northeast coordinates
-    ];
+
+// const bounds = [ // removed due to awkward states with geolocators
+//     [-74.29153354391028, 40.49823166182588], // Southwest coordinates
+//     [-73.63549013247152, 40.936286823381806] // Northeast coordinates
+// ];
+
 const map = new mapboxgl.Map({
     container: 'map',        // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
@@ -14,13 +16,16 @@ const map = new mapboxgl.Map({
     zoom: 14.5,              // starting zoom
     minZoom: 9,              // set min zoom
     maxZoom: 18,             // set max zoom
-    maxBounds: bounds        // restrict bounds 
+    // maxBounds: bounds     // restrict bounds 
+
 });
 
-var radius = {'base': .8,
-              'stops': [[12, 1], [18, 8.5]]} // change as user zooms in/out
-const opacity = 0.9
+var radius = {               // change as user zooms in/out
+    'base': .8,
+    'stops': [[12, 1], [18, 8.5]]
+} 
 
+const opacity = 0.9
 const parks_id = 'Parks'
 const plazas_id = 'Pedestrian Plazas'
 const restroom_id = "Public Restrooms"
@@ -29,20 +34,26 @@ const benches_id = "Benches"
 const fountains_id = "Water Fountains"
 const linkNYC_id = "LinkNYC Kiosk"
 const pops_id = "Privately Owned Public Spaces (POPS)"
-const toggleableLayerIds = [parks_id, plazas_id, restroom_id, seats_id, 
-                            benches_id, fountains_id, linkNYC_id, pops_id]
-const filters_design = [['#b2df8a','square'],
-                        ['#33a02c','square'],
-                        ['#e31a1c','circle'],
-                        ['#fdbf6f','circle'],
-                        ['#ff7f00','circle'],
-                        ['#1f78b4','circle'],
-                        ['#799FD9','circle'],
-                        ['#71CEB1','circle']]
+
+const toggleableLayerIds = [parks_id, plazas_id, restroom_id, seats_id,
+    benches_id, fountains_id, linkNYC_id, pops_id]
+    
+const filters_design = [['#b2df8a', 'square'],
+['#33a02c', 'square'],
+['#e31a1c', 'circle'],
+['#fdbf6f', 'circle'],
+['#ff7f00', 'circle'],
+['#1f78b4', 'circle'],
+['#799FD9', 'circle'],
+['#71CEB1', 'circle']]
+
 
 /////////////////////////////////
 // Add navigation controls
 map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
+
+/////////////////////////////////
+// Add search bar
 map.addControl(
     new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
@@ -52,6 +63,23 @@ map.addControl(
     'top-left'
 );
 
+/////////////////////////////////
+// Add gelocator (find user)
+map.addControl(
+    new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true
+    }),
+    'bottom-left'
+);
+
+/////////////////////////////////
+// Load Map!
 map.on('load', function () {
 
     /////////////////////////////////
@@ -415,46 +443,3 @@ map.on('load', function () {
         };
     });
 });
-
-// map.on('zoom', () => {
-//     var zoom = map.getZoom()
-//     console.log(`zoom level is ${zoom}`)
-//     if (zoom < 15){
-//         toggleableLayerIds.forEach((id, i) => {
-//             const check = map.getPaintP(
-//                 id,
-//                 paint
-//             );
-//             console.log(id, check)
-
-//         })
-//     } 
-// })
-
-// // Functions for filtering markers
-// function remove_marker(marker_list) {
-//     for (var i = 0; i < marker_list.length; i++) {
-//         marker_list[i].remove()
-//     }
-// }
-// function add_marker(marker_list) {
-//     for (var i = 0; i < marker_list.length; i++) {
-//         marker_list[i].addTo(map)
-//     }
-// }
-
-// function filter_markers(link, id, activeClass, markerlist){
-//     link.onclick = function (e) {
-//         console.log(e.textContent)
-//         var ele = document.getElementById(id)
-//         console.log(ele.className)
-//         if (ele.className.includes(activeClass)) {
-//             ele.className = ""
-//             remove_marker(markerlist)
-//         }
-//         else {
-//             ele.className = activeClass
-//             add_marker(markerlist)
-//         }
-//     }
-// }
