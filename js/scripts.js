@@ -1,11 +1,13 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBzeDZ3dTRodyJ9.aEmIpsNVZeh27U2L1z7j_A';
 
-const NYC_COORDINATES = [-73.98795036092295, 40.72391715135848]
+const NYC_COORDINATES = [-73.9973212748431, 40.731095154349916]
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: NYC_COORDINATES, // starting position [lng, lat]
-    zoom: 13, // starting zoom
+    zoom: 16, // starting zoom
+    minZoom: 9.5,
+    maxZoom: 18,
     bearing: 0,
     pitch: 0
 });
@@ -15,41 +17,35 @@ const plazas_id = 'Pedestrian Plazas'
 const restroom_id = "Public Restrooms"
 const seats_id = "Street Seats"
 const benches_id = "Benches"
-const colors = [
-    '#53C557',
-    '#066121',
-    '#9343C2',
-    '#3541E3',
-    '#35C3E3'
-]
+const fountains_id = "Water Fountains"
+const linkNYC_id = "LinkNYC Kiosk"
+const toggleableLayerIds = [parks_id, 
+                            plazas_id, 
+                            restroom_id, 
+                            seats_id, 
+                            benches_id, 
+                            fountains_id,
+                            linkNYC_id]
+const colors = ['#b2df8a',
+                '#33a02c',
+                '#e31a1c',
+                '#fdbf6f',
+                '#ff7f00',
+                '#1f78b4',
+                '#a6cee3']
 
+// add navigation controls
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
+map.addControl(
+    new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        zoom: 16
+    }),
+    'top-left'
+);
 
 map.on('load', function () {
-
-    const layers = [
-        parks_id,
-        plazas_id,
-        restroom_id,
-        seats_id,
-        benches_id
-    ];
-
-    // // create legend
-    // const legend = document.getElementById('legend');
-
-    // layers.forEach((layer, i) => {
-    //     const color = colors[i];
-    //     const item = document.createElement('div');
-    //     const key = document.createElement('span');
-    //     key.className = 'legend-key';
-    //     key.style.backgroundColor = color;
-
-    //     const value = document.createElement('span');
-    //     value.innerHTML = `${layer}`;
-    //     item.appendChild(key);
-    //     item.appendChild(value);
-    //     legend.appendChild(item);
-    // });
 
     /////////////////////////////////
     // Add nyc park locations
@@ -64,7 +60,7 @@ map.on('load', function () {
         source: 'nyc-parks',
         paint: {
             'fill-opacity': 0.8,
-            'fill-color': '#53C557' // green
+            'fill-color': colors[0]
 
         }
     }, 'road-label-simple')
@@ -75,20 +71,16 @@ map.on('load', function () {
             .setHTML(`
                     <table class="key-value-table">
                         <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Park</td>
+                        </tr>
+                        <tr>
                             <td class="key">Name</td>
                             <td class="value">${e.features[0].properties.name311}</td>
                         </tr>
                         <tr>
                             <td class="key">Location</td>
                             <td class="value">${e.features[0].properties.location}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Acres</td>
-                            <td class="value">${e.features[0].properties.acres}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Jurisdiction</td>
-                            <td class="value">${e.features[0].properties.jurisdiction}</td>
                         </tr>
                     </table>
                     `)
@@ -108,7 +100,7 @@ map.on('load', function () {
         source: 'nyc-pedestrianplazas',
         paint: {
             'fill-opacity': 0.8,
-            'fill-color': '#066121' //dark green
+            'fill-color': colors[1]
 
         }
     }, 'road-label-simple')
@@ -119,16 +111,16 @@ map.on('load', function () {
             .setHTML(`
                     <table class="key-value-table">
                         <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Pedestrian Plaza</td>
+                        </tr>
+                        <tr>
                             <td class="key">Name</td>
                             <td class="value">${e.features[0].properties.plazaname}</td>
                         </tr>
                         <tr>
                             <td class="key">Location</td>
                             <td class="value">${e.features[0].properties.onstreet}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Partner</td>
-                            <td class="value">${e.features[0].properties.partner}</td>
                         </tr>
                     </table>
                     `)
@@ -147,7 +139,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-restrooms',
         paint: {
-            'circle-color': '#9343C2', //purple
+            'circle-color': colors[2],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -159,8 +151,8 @@ map.on('load', function () {
             .setHTML(`
                     <table class="key-value-table">
                         <tr>
-                            <td class="key">Name</td>
-                            <td class="value">${e.features[0].properties.Name}</td>
+                            <td class="key">Type</td>
+                            <td class="value">Public Restroom</td>
                         </tr>
                         <tr>
                             <td class="key">Location</td>
@@ -191,7 +183,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-streetseats',
         paint: {
-            'circle-color': '#3541E3', //blue
+            'circle-color': colors[3],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -200,7 +192,18 @@ map.on('load', function () {
     map.on('click', seats_id, (e) => {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setText('street seat')
+            .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Street Seating</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${e.features[0].properties["location"]}</td>
+                        </tr>
+                    </table>
+                    `)
             .addTo(map);
     });
 
@@ -216,7 +219,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-benches',
         paint: {
-            'circle-color': '#35C3E3', //light blue
+            'circle-color': colors[4],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -225,64 +228,140 @@ map.on('load', function () {
     map.on('click', benches_id, (e) => {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setText('bench')
+            .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Bench</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${e.features[0].properties["address"]}</td>
+                        </tr>
+                    </table>
+                    `)
             .addTo(map);
     });
 
-});
+    /////////////////////////////////
+    // add water fountains
+    map.addSource('nyc-water-fountains', {
+        type: 'geojson',
+        data: './data/nyc-water-fountains.geojson'
+    })
+
+    map.addLayer({
+        id: fountains_id,
+        type: 'circle',
+        source: 'nyc-water-fountains',
+        paint: {
+            'circle-color': colors[5],
+            'circle-radius': 5,
+            'circle-opacity': .8
+        }
+    })
+
+    map.on('click', fountains_id, (e) => {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Water Fountain</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${e.features[0].properties["signname"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Position</td>
+                            <td class="value">${e.features[0].properties["position"]}</td>
+                        </tr>
+                    </table>
+                    `)
+            .addTo(map);
+    });
+
+    /////////////////////////////////
+    // add linkNYC kiosks
+    map.addSource('nyc-linkNYC-kiosk', {
+        type: 'geojson',
+        data: './data/nyc-LinkNYC.geojson'
+    })
+
+    map.addLayer({
+        id: linkNYC_id,
+        type: 'circle',
+        source: 'nyc-linkNYC-kiosk',
+        paint: {
+            'circle-color': colors[6],
+            'circle-radius': 5,
+            'circle-opacity': .8
+        }
+    })
+
+    map.on('click', linkNYC_id, (e) => {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">LinkNYC Kiosk</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${e.features[0].properties["Street Address"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Status</td>
+                            <td class="value">${e.features[0].properties["Installation Status"]}</td>
+                        </tr>
+                    </table>
+                    `)
+            .addTo(map);
+    });
+
+    var myOffcanvas = document.getElementById('offcanvasScrolling')
+    var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+    bsOffcanvas.show()
 
 
-// Event handling: toggling layers and points
-// ref: https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
-map.on('idle', () => {
-
-    // Enumerate ids of the layers.
-    const toggleableLayerIds = [parks_id, plazas_id, seats_id, benches_id, restroom_id]
-
+    // Event handling: toggling layers and points
+    // ref: https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
     // Set up the corresponding toggle button for each layer.
     toggleableLayerIds.forEach((id, i) => {
-        // Skip layers that already have a button set up.
-        if (!document.getElementById(id)) {
-            // Create a link.
-            const link = document.createElement('a')
-            link.id = id;
-            link.href = '#';
-            link.textContent = id;
-            link.className = 'active';
-            link.style.backgroundColor = colors[i]
-            map.setLayoutProperty(id, 'visibility', 'visible')
+        const link = document.getElementById(id)
+        link.style.backgroundColor = colors[i]
+        map.setLayoutProperty(id, 'visibility', 'visible')
 
+        // Show or hide layer when the toggle is clicked.
+        link.onclick = function (e) {
+            const clickedLayer = this.id;
+            e.preventDefault();
+            e.stopPropagation();
 
-            // Show or hide layer when the toggle is clicked.
-            link.onclick = function (e) {
-                const clickedLayer = this.textContent;
-                e.preventDefault();
-                e.stopPropagation();
+            const visibility = map.getLayoutProperty(
+                clickedLayer,
+                'visibility'
+            );
 
-                const visibility = map.getLayoutProperty(
+            // Toggle layer visibility by changing the layout object's visibility property.
+            if (visibility === 'visible') {
+                this.className = 'square';
+                this.style.backgroundColor = "#ccc";
+                map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            } else {
+                this.className = 'square active';
+                this.style.backgroundColor = colors[i];
+                map.setLayoutProperty(
                     clickedLayer,
-                    'visibility'
+                    'visibility',
+                    'visible'
                 );
-
-                // Toggle layer visibility by changing the layout object's visibility property.
-                if (visibility === 'visible') {
-                    this.className = '';
-                    this.style.backgroundColor = "#ccc";
-                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                    
-                } else {
-                    this.className = 'active';
-                    this.style.backgroundColor = colors[i];
-                    map.setLayoutProperty(
-                        clickedLayer,
-                        'visibility',
-                        'visible'
-                    );
-                }
-            };
-            const layers = document.getElementById('menu');
-            layers.appendChild(link);
-        }
+            }
+        };
     });
 });
 

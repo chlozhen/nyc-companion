@@ -12,15 +12,22 @@ body {
     overflow: hidden;
 }
 
-#bars {
+#main-icon {
+  color:#675571;
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+#bars-container {
   flex-grow: 1;
   justify-content: end;
   display: flex;
+  color: #675571;
+  font-size: 2rem;
 }
 
-#bars {
-  display: inline-block;
-  font-size: .9rem;
+#bars:hover {
+  cursor: pointer;
 }
 
 #map {
@@ -34,45 +41,64 @@ nav {
     padding: 1rem;
     display: flex;
     z-index: 10;
-    background: #6869a3;
+    background: #bebada;
     /* border-bottom: 1px solid #8c2d04; */
 }
 
-.sidebar {
-  position: absolute;
-  width: 25%;
-  z-index: 10;
-  background: #6869a3;
-  padding: 20px;
-  top: 60px;
-  margin-top: 15px;
-  margin-left: 15px;
-  border: 200px;
-  border-radius: 20px;
-  overflow: scroll;
-}
-
 .title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: #d5eafb;
-  margin-bottom: 4px;
+  color: #675571;
+  margin-bottom: 2px;
 }
 
 .description {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 10px;
-  color: #eef3fb;
+  color: #675571;
+}
+
+#icon {
+  margin-right: 5px;
 }
 
 
+
+
+/* Design for Offcanvas Sidebar */
+.offcanvas {
+  background-color: #bebada;
+}
+
+
+
+/* Design for Accordion items in the Sidebar */
+.accordion-item {
+  border-color: #dbe6f5;
+}
+.accordion-button {
+  color: #675571;
+}
+.accordion-button.collapsed {
+  background-color: #eef3fb;
+}
+.accordion-button:not(.collapsed) {
+  color: #bc80bd;
+}
+.accordion-body {
+  background-color: #dbe6f5;
+}
+#accordion-icon{
+  margin-right: 10px;
+  font-size: 20px;
+}
 
 
 
 /* Design pop up description table*/
 .mapboxgl-popup-content {
   display: inline-block;
-  background-color:#e0e9f6;
+  background-color:#dbe6f5;
 }
 
 /* Table Design for location pop-up text */
@@ -91,58 +117,34 @@ nav {
 
 .key-value-table td.key {
   font-weight: bold;
-  color: #444;
-  background-color: #d5eafb;
+  color: #675571;
+  background-color: #bebada;
 }
 
 .key-value-table td.value {
-  color: #0a0808;
+  color: #675571;
 }
 
 
 
 
-
-/* Design for Toggle Buttons */
-#menu {
-  background: #d5eafb;
-  position: absolute;
-  z-index: 1;
-  top: 75px;
-  right: 10px;
-  border-radius: 3px;
-  width: 120px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+/* Design for Filters */
+.filter-item {
+  display: inline-block;
+  margin-right: 90px;
 }
 
-#menu a {
-  font-size: 13px;
-  color: #404040;
-  display: block;
-  margin: 0;
-  padding: 0;
-  padding: 8px;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  text-align: center;
+.square {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 5px;
+  border: 1px solid #444;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
-#menu a:last-child {
-  border: none;
+.square.active {
+  cursor: pointer;
 }
-
-#menu a:hover {
-  background-color: #eef3fb;
-  color: #404040;
-}
-
-#menu a.active {
-  background-color: #6869a3;
-  color: #eef3fb;
-}
-
-#menu a.active:hover {
-  background: #3e407c;
-}
-
-
