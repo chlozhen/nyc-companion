@@ -3,13 +3,18 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBze
 /////////////////////////////////
 // Add global variables - map, types of data
 const NYC_COORDINATES = [-73.99096559187603, 40.73421219946701]
+const bounds = [
+    [-74.29153354391028, 40.49823166182588], // Southwest coordinates
+    [-73.63549013247152, 40.936286823381806] // Northeast coordinates
+    ];
 const map = new mapboxgl.Map({
     container: 'map',        // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: NYC_COORDINATES, // starting position [lng, lat]
     zoom: 14.5,              // starting zoom
-    minZoom: 9.5,            // min zoom
-    maxZoom: 18              // max zoom
+    minZoom: 9,              // set min zoom
+    maxZoom: 18,             // set max zoom
+    maxBounds: bounds        // restrict bounds 
 });
 
 var radius = {'base': .8,
