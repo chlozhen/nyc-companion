@@ -4,11 +4,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBze
 // Add global variables - map, types of data
 const NYC_COORDINATES = [-73.99096559187603, 40.73421219946701]
 
-// const bounds = [ // removed due to awkward states with geolocators
-//     [-74.29153354391028, 40.49823166182588], // Southwest coordinates
-//     [-73.63549013247152, 40.936286823381806] // Northeast coordinates
-// ];
-
 const map = new mapboxgl.Map({
     container: 'map',        // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
@@ -16,8 +11,6 @@ const map = new mapboxgl.Map({
     zoom: 14.5,              // starting zoom
     minZoom: 9,              // set min zoom
     maxZoom: 18,             // set max zoom
-    // maxBounds: bounds     // restrict bounds 
-
 });
 
 var radius = {               // change as user zooms in/out
@@ -37,7 +30,7 @@ const pops_id = "Privately Owned Public Spaces (POPS)"
 
 const toggleableLayerIds = [parks_id, plazas_id, restroom_id, seats_id,
     benches_id, fountains_id, linkNYC_id, pops_id]
-    
+
 const filters_design = [['#b2df8a', 'square'],
 ['#33a02c', 'square'],
 ['#e31a1c', 'circle'],
