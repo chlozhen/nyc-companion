@@ -1,1 +1,317 @@
-{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.960825, 40.66001]}, "properties": {"location": "2122 Beekman Place"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.979727, 40.669133]}, "properties": {"location": "258 7th Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.911055, 40.66963]}, "properties": {"location": "1686 Pitkin Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.977499, 40.680767]}, "properties": {"location": "63 5th Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.961584, 40.682182]}, "properties": {"location": "462 Grand Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.979212, 40.688236]}, "properties": {"location": "647 Fulton Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.984328, 40.692607]}, "properties": {"location": "192 Duffield Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.986228, 40.692829]}, "properties": {"location": "111 Lawrence Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.987644, 40.700095]}, "properties": {"location": "117 Adams & 73 Sand Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.988829, 40.7135]}, "properties": {"location": "177 Henry Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-74.010245, 40.717403]}, "properties": {"location": "184 Duane Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.990375, 40.717873]}, "properties": {"location": "85 Orchard Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-74.000336, 40.727656]}, "properties": {"location": "169 Thompson Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-74.007151, 40.728435]}, "properties": {"location": "375 Hudson Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.993859, 40.735656]}, "properties": {"location": "65 5th Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-74.006428, 40.746202]}, "properties": {"location": "511-513 W 20th Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.942122, 40.747228]}, "properties": {"location": "26-01 Jackson Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.948429, 40.749857]}, "properties": {"location": "12-01 44th Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.991053, 40.752034]}, "properties": {"location": "224 W 35th St"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.998787, 40.755062]}, "properties": {"location": "444 10th Avenue"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.996463, 40.755951]}, "properties": {"location": "431 W 37th Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.996856, 40.756099]}, "properties": {"location": "456 W37th Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.98999, 40.759843]}, "properties": {"location": "359 W 45th Street"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-73.927621, 40.810831]}, "properties": {"location": "2535 Third Avenue"}}]}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.960825,
+                    40.66001
+                ]
+            },
+            "properties": {
+                "location": "2122 Beekman Place"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.979727,
+                    40.669133
+                ]
+            },
+            "properties": {
+                "location": "258 7th Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.911055,
+                    40.66963
+                ]
+            },
+            "properties": {
+                "location": "1686 Pitkin Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.977499,
+                    40.680767
+                ]
+            },
+            "properties": {
+                "location": "63 5th Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.961584,
+                    40.682182
+                ]
+            },
+            "properties": {
+                "location": "462 Grand Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.979212,
+                    40.688236
+                ]
+            },
+            "properties": {
+                "location": "647 Fulton Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.984328,
+                    40.692607
+                ]
+            },
+            "properties": {
+                "location": "192 Duffield Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.986228,
+                    40.692829
+                ]
+            },
+            "properties": {
+                "location": "111 Lawrence Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.987644,
+                    40.700095
+                ]
+            },
+            "properties": {
+                "location": "117 Adams & 73 Sand Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.988829,
+                    40.7135
+                ]
+            },
+            "properties": {
+                "location": "177 Henry Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.010245,
+                    40.717403
+                ]
+            },
+            "properties": {
+                "location": "184 Duane Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.990375,
+                    40.717873
+                ]
+            },
+            "properties": {
+                "location": "85 Orchard Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.000336,
+                    40.727656
+                ]
+            },
+            "properties": {
+                "location": "169 Thompson Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.007151,
+                    40.728435
+                ]
+            },
+            "properties": {
+                "location": "375 Hudson Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.993859,
+                    40.735656
+                ]
+            },
+            "properties": {
+                "location": "65 5th Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.006428,
+                    40.746202
+                ]
+            },
+            "properties": {
+                "location": "511-513 W 20th Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.942122,
+                    40.747228
+                ]
+            },
+            "properties": {
+                "location": "26-01 Jackson Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.948429,
+                    40.749857
+                ]
+            },
+            "properties": {
+                "location": "12-01 44th Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.991053,
+                    40.752034
+                ]
+            },
+            "properties": {
+                "location": "224 W 35th St"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.998787,
+                    40.755062
+                ]
+            },
+            "properties": {
+                "location": "444 10th Avenue"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.996463,
+                    40.755951
+                ]
+            },
+            "properties": {
+                "location": "431 W 37th Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.996856,
+                    40.756099
+                ]
+            },
+            "properties": {
+                "location": "456 W37th Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.98999,
+                    40.759843
+                ]
+            },
+            "properties": {
+                "location": "359 W 45th Street"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.927621,
+                    40.810831
+                ]
+            },
+            "properties": {
+                "location": "2535 Third Avenue"
+            }
+        }
+    ]
+}

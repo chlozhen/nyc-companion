@@ -16,7 +16,7 @@ const map = new mapboxgl.Map({
 var radius = {               // change as user zooms in/out
     'base': .8,
     'stops': [[12, 1], [18, 8.5]]
-} 
+}
 
 const opacity = 0.9
 const parks_id = 'Parks'
@@ -31,15 +31,15 @@ const pops_id = "Privately Owned Public Spaces (POPS)"
 const toggleableLayerIds = [parks_id, plazas_id, restroom_id, seats_id,
     benches_id, fountains_id, linkNYC_id, pops_id]
 
-const filters_design = [['#b2df8a', 'square'],
-['#33a02c', 'square'],
-['#e31a1c', 'circle'],
-['#fdbf6f', 'circle'],
-['#ff7f00', 'circle'],
-['#1f78b4', 'circle'],
-['#799FD9', 'circle'],
-['#71CEB1', 'circle']]
-
+const filters_design = [
+    ['#b2df8a', 'square'],
+    ['#33a02c', 'square'],
+    ['#e31a1c', 'circle'],
+    ['#fdbf6f', 'circle'],
+    ['#ff7f00', 'circle'],
+    ['#1f78b4', 'circle'],
+    ['#799FD9', 'circle'],
+    ['#71CEB1', 'circle']]
 
 /////////////////////////////////
 // Add navigation controls
@@ -81,7 +81,6 @@ map.on('load', function () {
         type: 'geojson',
         data: './data/nyc-parks.geojson'
     })
-
     map.addLayer({
         id: parks_id,
         type: 'fill',
@@ -93,35 +92,12 @@ map.on('load', function () {
         }
     }, 'road-label-simple')
 
-    map.on('click', parks_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">Park</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Name</td>
-                            <td class="value">${e.features[0].properties.name311}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties.location}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add nyc pedestrian plazas
     map.addSource('nyc-pedestrianplazas', {
         type: 'geojson',
         data: './data/nyc-pedestrianplazas.geojson'
     })
-
     map.addLayer({
         id: plazas_id,
         type: 'fill',
@@ -133,35 +109,12 @@ map.on('load', function () {
         }
     }, 'road-label-simple')
 
-    map.on('click', plazas_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">Pedestrian Plaza</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Name</td>
-                            <td class="value">${e.features[0].properties.plazaname}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties.onstreet}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add nyc restrooms
     map.addSource('nyc-restrooms', {
         type: 'geojson',
         data: './data/nyc-public-restrooms-2021.geojson'
     });
-
     map.addLayer({
         id: restroom_id,
         type: 'circle',
@@ -173,39 +126,12 @@ map.on('load', function () {
         }
     });
 
-    map.on('click', restroom_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">Public Restroom</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties.Location}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Open Year-Round</td>
-                            <td class="value">${e.features[0].properties["Open Year-Round"]}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Handicap Accessible</td>
-                            <td class="value">${e.features[0].properties["Handicap Accessible"]}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add streetseats
     map.addSource('nyc-streetseats', {
         type: 'geojson',
         data: './data/nyc-streetseats-2014-2019.geojson'
     });
-
     map.addLayer({
         id: seats_id,
         type: 'circle',
@@ -217,31 +143,12 @@ map.on('load', function () {
         }
     });
 
-    map.on('click', seats_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">Street Seating</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties["location"]}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add benches
     map.addSource('nyc-benches', {
         type: 'geojson',
         data: './data/nyc-benches-2022.geojson'
     })
-
     map.addLayer({
         id: benches_id,
         type: 'circle',
@@ -253,31 +160,12 @@ map.on('load', function () {
         }
     })
 
-    map.on('click', benches_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">Bench</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties["address"]}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add water fountains
     map.addSource('nyc-water-fountains', {
         type: 'geojson',
         data: './data/nyc-water-fountains.geojson'
     })
-
     map.addLayer({
         id: fountains_id,
         type: 'circle',
@@ -289,35 +177,12 @@ map.on('load', function () {
         }
     })
 
-    map.on('click', fountains_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">Water Fountain</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties["signname"]}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Position</td>
-                            <td class="value">${e.features[0].properties["position"]}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add linkNYC kiosks
     map.addSource('nyc-linkNYC-kiosk', {
         type: 'geojson',
         data: './data/nyc-LinkNYC.geojson'
     })
-
     map.addLayer({
         id: linkNYC_id,
         type: 'circle',
@@ -329,35 +194,12 @@ map.on('load', function () {
         }
     })
 
-    map.on('click', linkNYC_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">LinkNYC Kiosk</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Location</td>
-                            <td class="value">${e.features[0].properties["Street Address"]}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Status</td>
-                            <td class="value">${e.features[0].properties["Installation Status"]}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
-
     /////////////////////////////////
     // Add POPS
     map.addSource('nyc-pops', {
         type: 'geojson',
         data: './data/nyc-pops.geojson'
     })
-
     map.addLayer({
         id: pops_id,
         type: 'circle',
@@ -368,32 +210,6 @@ map.on('load', function () {
             'circle-opacity': opacity
         }
     })
-
-    map.on('click', pops_id, (e) => {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`
-                    <table class="key-value-table">
-                        <tr>
-                            <td class="key">Type</td>
-                            <td class="value">POPS</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Address</td>
-                            <td class="value">${e.features[0].properties["building_address_with_zip"]}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Developer</td>
-                            <td class="value">${e.features[0].properties["developer"]}</td>
-                        </tr>
-                        <tr>
-                            <td class="key">Amneities</td>
-                            <td class="value">${e.features[0].properties["amenities_required"]}</td>
-                        </tr>
-                    </table>
-                    `)
-            .addTo(map);
-    });
 
     /////////////////////////////////
     // Offcanvas sidebar displayed automatically
@@ -435,4 +251,181 @@ map.on('load', function () {
             }
         };
     });
+});
+
+/////////////////////////////////
+// Event handling: Add popups when user clicks layers
+map.on('click', (e) => {
+    const features = map.queryRenderedFeatures(e.point);
+    if (features.length >= 1) {
+        const id = features[0].layer.id
+        if (id == parks_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Park</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Name</td>
+                            <td class="value">${features[0].properties.name311}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties.location}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == plazas_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Pedestrian Plaza</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Name</td>
+                            <td class="value">${features[0].properties.plazaname}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties.onstreet}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == restroom_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Public Restroom</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties.Location}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Open Year-Round</td>
+                            <td class="value">${features[0].properties["Open Year-Round"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Handicap Accessible</td>
+                            <td class="value">${features[0].properties["Handicap Accessible"]}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == seats_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Street Seating</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties["location"]}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == benches_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Bench</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties["address"]}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == fountains_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">Water Fountain</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties["signname"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Position</td>
+                            <td class="value">${features[0].properties["position"]}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == linkNYC_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">LinkNYC Kiosk</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Location</td>
+                            <td class="value">${features[0].properties["Street Address"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Status</td>
+                            <td class="value">${features[0].properties["Installation Status"]}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+        if (id == pops_id) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">POPS</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Address</td>
+                            <td class="value">${features[0].properties["building_address_with_zip"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Developer</td>
+                            <td class="value">${features[0].properties["developer"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Amneities</td>
+                            <td class="value">${features[0].properties["amenities_required"]}</td>
+                        </tr>
+                    </table>
+                    `)
+                .addTo(map);
+        }
+    }
 });
