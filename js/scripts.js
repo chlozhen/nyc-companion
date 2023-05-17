@@ -12,6 +12,10 @@ const map = new mapboxgl.Map({
     maxZoom: 18              // max zoom
 });
 
+var radius = {'base': .8,
+              'stops': [[12, 1], [18, 8.5]]} // change as user zooms in/out
+const opacity = 0.9
+
 const parks_id = 'Parks'
 const plazas_id = 'Pedestrian Plazas'
 const restroom_id = "Public Restrooms"
@@ -55,7 +59,7 @@ map.on('load', function () {
         type: 'fill',
         source: 'nyc-parks',
         paint: {
-            'fill-opacity': 0.8,
+            'fill-opacity': opacity,
             'fill-color': filters_design[0][0]
 
         }
@@ -95,7 +99,7 @@ map.on('load', function () {
         type: 'fill',
         source: 'nyc-pedestrianplazas',
         paint: {
-            'fill-opacity': 0.8,
+            'fill-opacity': opacity,
             'fill-color': filters_design[1][0]
 
         }
@@ -136,8 +140,8 @@ map.on('load', function () {
         source: 'nyc-restrooms',
         paint: {
             'circle-color': filters_design[2][0],
-            'circle-radius': 5,
-            'circle-opacity': .8
+            'circle-radius': radius,
+            'circle-opacity': opacity
         }
     });
 
@@ -180,8 +184,8 @@ map.on('load', function () {
         source: 'nyc-streetseats',
         paint: {
             'circle-color': filters_design[3][0],
-            'circle-radius': 5,
-            'circle-opacity': .8
+            'circle-radius': radius,
+            'circle-opacity': opacity
         }
     });
 
@@ -216,8 +220,8 @@ map.on('load', function () {
         source: 'nyc-benches',
         paint: {
             'circle-color': filters_design[4][0],
-            'circle-radius': 5,
-            'circle-opacity': .8
+            'circle-radius': radius,
+            'circle-opacity': opacity
         }
     })
 
@@ -252,8 +256,8 @@ map.on('load', function () {
         source: 'nyc-water-fountains',
         paint: {
             'circle-color': filters_design[5][0],
-            'circle-radius': 5,
-            'circle-opacity': .8
+            'circle-radius': radius,
+            'circle-opacity': opacity
         }
     })
 
@@ -292,8 +296,8 @@ map.on('load', function () {
         source: 'nyc-linkNYC-kiosk',
         paint: {
             'circle-color': filters_design[6][0],
-            'circle-radius': 5,
-            'circle-opacity': .8
+            'circle-radius': radius,
+            'circle-opacity': opacity
         }
     })
 
@@ -359,6 +363,20 @@ map.on('load', function () {
     });
 });
 
+// map.on('zoom', () => {
+//     var zoom = map.getZoom()
+//     console.log(`zoom level is ${zoom}`)
+//     if (zoom < 15){
+//         toggleableLayerIds.forEach((id, i) => {
+//             const check = map.getPaintP(
+//                 id,
+//                 paint
+//             );
+//             console.log(id, check)
+
+//         })
+//     } 
+// })
 
 // // Functions for filtering markers
 // function remove_marker(marker_list) {
