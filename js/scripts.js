@@ -1,15 +1,15 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBzeDZ3dTRodyJ9.aEmIpsNVZeh27U2L1z7j_A';
 
+/////////////////////////////////
+// Add constant variables - map, types of data
 const NYC_COORDINATES = [-73.99096559187603, 40.73421219946701]
 const map = new mapboxgl.Map({
-    container: 'map', // container ID
+    container: 'map',        // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: NYC_COORDINATES, // starting position [lng, lat]
-    zoom: 14.5, // starting zoom
-    minZoom: 9.5,
-    maxZoom: 18,
-    bearing: 0,
-    pitch: 0
+    zoom: 14.5,              // starting zoom
+    minZoom: 9.5,            // min zoom
+    maxZoom: 18              // max zoom
 });
 
 const parks_id = 'Parks'
@@ -19,22 +19,18 @@ const seats_id = "Street Seats"
 const benches_id = "Benches"
 const fountains_id = "Water Fountains"
 const linkNYC_id = "LinkNYC Kiosk"
-const toggleableLayerIds = [parks_id, 
-                            plazas_id, 
-                            restroom_id, 
-                            seats_id, 
-                            benches_id, 
-                            fountains_id,
-                            linkNYC_id]
-const colors = ['#b2df8a',
-                '#33a02c',
-                '#e31a1c',
-                '#fdbf6f',
-                '#ff7f00',
-                '#1f78b4',
-                '#a6cee3']
+const toggleableLayerIds = [parks_id, plazas_id, restroom_id, 
+                            seats_id, benches_id, fountains_id, linkNYC_id]
+const filters_design = [['#b2df8a','square'],
+                        ['#33a02c','square'],
+                        ['#e31a1c','circle'],
+                        ['#fdbf6f','circle'],
+                        ['#ff7f00','circle'],
+                        ['#1f78b4','circle'],
+                        ['#a6cee3','circle']]
 
-// add navigation controls
+/////////////////////////////////
+// Add navigation controls
 map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
 map.addControl(
     new MapboxGeocoder({
@@ -60,7 +56,7 @@ map.on('load', function () {
         source: 'nyc-parks',
         paint: {
             'fill-opacity': 0.8,
-            'fill-color': colors[0]
+            'fill-color': filters_design[0][0]
 
         }
     }, 'road-label-simple')
@@ -100,7 +96,7 @@ map.on('load', function () {
         source: 'nyc-pedestrianplazas',
         paint: {
             'fill-opacity': 0.8,
-            'fill-color': colors[1]
+            'fill-color': filters_design[1][0]
 
         }
     }, 'road-label-simple')
@@ -128,7 +124,7 @@ map.on('load', function () {
     });
 
     /////////////////////////////////
-    // add nyc restrooms
+    // Add nyc restrooms
     map.addSource('nyc-restrooms', {
         type: 'geojson',
         data: './data/nyc-public-restrooms-2021.geojson'
@@ -139,7 +135,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-restrooms',
         paint: {
-            'circle-color': colors[2],
+            'circle-color': filters_design[2][0],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -172,7 +168,7 @@ map.on('load', function () {
     });
 
     /////////////////////////////////
-    // add streetseats
+    // Add streetseats
     map.addSource('nyc-streetseats', {
         type: 'geojson',
         data: './data/nyc-streetseats-2014-2019.geojson'
@@ -183,7 +179,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-streetseats',
         paint: {
-            'circle-color': colors[3],
+            'circle-color': filters_design[3][0],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -208,7 +204,7 @@ map.on('load', function () {
     });
 
     /////////////////////////////////
-    // add benches
+    // Add benches
     map.addSource('nyc-benches', {
         type: 'geojson',
         data: './data/nyc-benches-2022.geojson'
@@ -219,7 +215,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-benches',
         paint: {
-            'circle-color': colors[4],
+            'circle-color': filters_design[4][0],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -244,7 +240,7 @@ map.on('load', function () {
     });
 
     /////////////////////////////////
-    // add water fountains
+    // Add water fountains
     map.addSource('nyc-water-fountains', {
         type: 'geojson',
         data: './data/nyc-water-fountains.geojson'
@@ -255,7 +251,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-water-fountains',
         paint: {
-            'circle-color': colors[5],
+            'circle-color': filters_design[5][0],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -284,7 +280,7 @@ map.on('load', function () {
     });
 
     /////////////////////////////////
-    // add linkNYC kiosks
+    // Add linkNYC kiosks
     map.addSource('nyc-linkNYC-kiosk', {
         type: 'geojson',
         data: './data/nyc-LinkNYC.geojson'
@@ -295,7 +291,7 @@ map.on('load', function () {
         type: 'circle',
         source: 'nyc-linkNYC-kiosk',
         paint: {
-            'circle-color': colors[6],
+            'circle-color': filters_design[6][0],
             'circle-radius': 5,
             'circle-opacity': .8
         }
@@ -327,13 +323,11 @@ map.on('load', function () {
     var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
     bsOffcanvas.show()
 
-
-    // Event handling: toggling layers and points
-    // ref: https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
-    // Set up the corresponding toggle button for each layer.
+    /////////////////////////////////
+    // Event handling: toggling layers and points (ref: https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/)
     toggleableLayerIds.forEach((id, i) => {
         const link = document.getElementById(id)
-        link.style.backgroundColor = colors[i]
+        link.style.backgroundColor = filters_design[i][0]
         map.setLayoutProperty(id, 'visibility', 'visible')
 
         // Show or hide layer when the toggle is clicked.
@@ -349,12 +343,12 @@ map.on('load', function () {
 
             // Toggle layer visibility by changing the layout object's visibility property.
             if (visibility === 'visible') {
-                this.className = 'square';
+                this.className = filters_design[i][1];
                 this.style.backgroundColor = "#ccc";
                 map.setLayoutProperty(clickedLayer, 'visibility', 'none');
             } else {
-                this.className = 'square active';
-                this.style.backgroundColor = colors[i];
+                this.className = filters_design[i][1] + ' active';
+                this.style.backgroundColor = filters_design[i][0];
                 map.setLayoutProperty(
                     clickedLayer,
                     'visibility',
