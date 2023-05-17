@@ -1,3 +1,5 @@
+/* ----------------------------- */
+/* General designs */
 body {
   margin: 0;
   padding: 0;
@@ -5,29 +7,17 @@ body {
 }
 
 #main-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 #main-icon {
-  color:#675571;
-  font-size: 2rem;
-  margin-right: 5px;
-}
-
-#bars-container {
-  flex-grow: 1;
-  justify-content: end;
-  display: flex;
   color: #675571;
   font-size: 2rem;
-}
-
-#bars:hover {
-  cursor: pointer;
+  margin-right: 5px;
 }
 
 #map {
@@ -35,14 +25,6 @@ body {
   top: 60px;
   bottom: 0;
   width: 100%;
-}
-
-nav {
-    padding: 1rem;
-    display: flex;
-    z-index: 10;
-    background: #bebada;
-    /* border-bottom: 1px solid #8c2d04; */
 }
 
 .title {
@@ -62,45 +44,87 @@ nav {
   margin-right: 5px;
 }
 
-
-
-
-/* Design for Offcanvas Sidebar */
 .offcanvas {
   background-color: #bebada;
 }
 
+/* ----------------------------- */
+/* Design for Header */
+#bars-container {
+  flex-grow: 1;
+  justify-content: end;
+  display: flex;
+  color: #675571;
+  font-size: 2rem;
+}
 
+#bars:hover {
+  cursor: pointer;
+}
 
+nav {
+  padding: 1rem;
+  display: flex;
+  z-index: 10;
+  background: #bebada;
+  /* border-bottom: 1px solid #8c2d04; */
+}
+
+/* ----------------------------- */
 /* Design for Accordion items in the Sidebar */
 .accordion-item {
   border-color: #dbe6f5;
 }
+
 .accordion-button {
   color: #675571;
 }
+
 .accordion-button.collapsed {
   background-color: #eef3fb;
 }
+
 .accordion-button:not(.collapsed) {
   color: #bc80bd;
 }
+
 .accordion-body {
   background-color: #dbe6f5;
 }
-#accordion-icon{
+
+#accordion-icon {
   margin-right: 10px;
   font-size: 20px;
 }
 
-
-
-/* Design pop up description table*/
-.mapboxgl-popup-content {
-  display: inline-block;
-  background-color:#dbe6f5;
+/* ----------------------------- */
+/* Design pop up tables */
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+  border-bottom-color: #dbe6f5;
 }
 
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+  border-top-color: #dbe6f5;
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: #dbe6f5;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: #dbe6f5;
+}
+
+.mapboxgl-popup-content {
+  display: inline-block;
+  background: #dbe6f5;
+}
+
+/* ----------------------------- */
 /* Table Design for location pop-up text */
 .key-value-table {
   border-collapse: collapse;
@@ -112,7 +136,7 @@ nav {
 .key-value-table td {
   padding: 2px 8px;
   border: 1px solid#ffffff;
-  background-color:#eef3fb;
+  background-color: #eef3fb;
 }
 
 .key-value-table td.key {
@@ -125,9 +149,7 @@ nav {
   color: #675571;
 }
 
-
-
-
+/* ----------------------------- */
 /* Design for Filters */
 .filter-item {
   display: inline-block;
