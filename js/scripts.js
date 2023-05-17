@@ -1,11 +1,11 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBzeDZ3dTRodyJ9.aEmIpsNVZeh27U2L1z7j_A';
 
-const NYC_COORDINATES = [-73.9973212748431, 40.731095154349916]
+const NYC_COORDINATES = [-73.99096559187603, 40.73421219946701]
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: NYC_COORDINATES, // starting position [lng, lat]
-    zoom: 16, // starting zoom
+    zoom: 14.5, // starting zoom
     minZoom: 9.5,
     maxZoom: 18,
     bearing: 0,
