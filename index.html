@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>NYC Mobile Companion</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <!-- Adding all stylesheets -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -17,6 +18,7 @@
 
 <body>
     <div id="main-container">
+        <!-- Create invisible navigation bar for top icons (map, hamburger) -->
         <nav>
             <i id="main-icon" class="fa fa-map-location-dot"></i>
             <div id="bars-container">
@@ -24,7 +26,7 @@
                     aria-controls="offcanvasScrolling"></div>
             </div>
         </nav>
-
+        <!-- Create Offcanvas sidebar - should open automatically using javascript -->
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
             id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
@@ -33,7 +35,9 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
+                <!-- Create accordion organizer for About, Services, and Contact -->
                 <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <!-- ABOUT SECTION -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -45,24 +49,23 @@
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                             <div class="accordion-body">
                                 <div class="description">
-                                    <p>Welcome! The goal of this map is to provide vistors and tourists a guide to
-                                        essential
-                                        needs while they are out and about!</p>
-                                    <p>Need a restroom? Water fountain? Phone-charging station? Or perhaps after a long
-                                        day
-                                        touring the city, you want to find somewhere to sit and relax outside?</p>
+                                    <p>Welcome! This map was created to provide visitors and tourists a guide to
+                                        essential needs while they are out and about!</p>
+                                    <p>Need a restroom? Water fountain? Phone-charging station? Or need a place to relax after a long
+                                        day touring the city?</p>
                                 </div>
                                 <div class="description">
-                                    Use the <strong><i id="icon"
-                                            class="fa-solid fa-magnifying-glass"></i>Search</strong> bar at the top left
-                                    of the map to find the closest services to a specific location.
-                                    Use the <strong>Services</strong> section below to identify specific services.
-                                    <strong><i id="icon" class="fa-solid fa-hand-pointer"></i>Click</strong> the colored
-                                    <strong>dots</strong> and colored <strong>plots</strong> on the map for more info.
+                                    Use the top-left <strong><i id="icon"
+                                            class="fa-solid fa-magnifying-glass"></i>Search</strong> bar to go to a specific location.
+                                    Use the bottom-left <strong>icons</strong> to go to your current location and navigate the map. 
+                                    On the map, <strong><i id="icon" class="fa-solid fa-hand-pointer"></i>Click</strong> the colored
+                                    <strong>dots</strong> and colored <strong>plots</strong> for more info.
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- SERVICES SECTION -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -75,7 +78,7 @@
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                             <div class="accordion-body">
                                 <div class="description">
-                                    The colors below correspond to the following services. <strong><i id="icon"
+                                    Colors correspond to the following services. <strong><i id="icon"
                                             class="fa-solid fa-hand-pointer"></i>Click</strong> the boxes and circles
                                     below to <strong>filter</strong> services on the map.
                                 </div>
@@ -115,6 +118,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- CONTACT SECTION -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -138,10 +142,11 @@
                 </div>
             </div>
         </div>
-
+        <!-- Add map -->
         <div id="map"></div>
     </div>
 
+    <!-- Adding all scripts -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
