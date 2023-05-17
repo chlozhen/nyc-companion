@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb3poZW4iLCJhIjoiY2xnNXFlMGkxMDF0YzNobjBzeDZ3dTRodyJ9.aEmIpsNVZeh27U2L1z7j_A';
 
 /////////////////////////////////
-// Add constant variables - map, types of data
+// Add global variables - map, types of data
 const NYC_COORDINATES = [-73.99096559187603, 40.73421219946701]
 const map = new mapboxgl.Map({
     container: 'map',        // container ID
@@ -23,15 +23,17 @@ const seats_id = "Street Seats"
 const benches_id = "Benches"
 const fountains_id = "Water Fountains"
 const linkNYC_id = "LinkNYC Kiosk"
-const toggleableLayerIds = [parks_id, plazas_id, restroom_id, 
-                            seats_id, benches_id, fountains_id, linkNYC_id]
+const pops_id = "Privately Owned Public Spaces (POPS)"
+const toggleableLayerIds = [parks_id, plazas_id, restroom_id, seats_id, 
+                            benches_id, fountains_id, linkNYC_id, pops_id]
 const filters_design = [['#b2df8a','square'],
                         ['#33a02c','square'],
                         ['#e31a1c','circle'],
                         ['#fdbf6f','circle'],
                         ['#ff7f00','circle'],
                         ['#1f78b4','circle'],
-                        ['#a6cee3','circle']]
+                        ['#799FD9','circle'],
+                        ['#71CEB1','circle']]
 
 /////////////////////////////////
 // Add navigation controls
@@ -323,6 +325,52 @@ map.on('load', function () {
             .addTo(map);
     });
 
+    /////////////////////////////////
+    // Add POPS
+    map.addSource('nyc-pops', {
+        type: 'geojson',
+        data: './data/nyc-pops.geojson'
+    })
+
+    map.addLayer({
+        id: pops_id,
+        type: 'circle',
+        source: 'nyc-pops',
+        paint: {
+            'circle-color': filters_design[7][0],
+            'circle-radius': radius,
+            'circle-opacity': opacity
+        }
+    })
+
+    map.on('click', pops_id, (e) => {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+                    <table class="key-value-table">
+                        <tr>
+                            <td class="key">Type</td>
+                            <td class="value">POPS</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Address</td>
+                            <td class="value">${e.features[0].properties["building_address_with_zip"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Developer</td>
+                            <td class="value">${e.features[0].properties["developer"]}</td>
+                        </tr>
+                        <tr>
+                            <td class="key">Amneities</td>
+                            <td class="value">${e.features[0].properties["amenities_required"]}</td>
+                        </tr>
+                    </table>
+                    `)
+            .addTo(map);
+    });
+
+    /////////////////////////////////
+    // Offcanvas sidebar displayed automatically
     var myOffcanvas = document.getElementById('offcanvasScrolling')
     var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
     bsOffcanvas.show()

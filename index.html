@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
     <script src="https://kit.fontawesome.com/32976dc9ad.js" crossorigin="anonymous"></script>
 </head>
 
@@ -23,8 +25,8 @@
             </div>
         </nav>
 
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling"
-            aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
                 <p class="title">NYC Mobile Companion</p>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
@@ -43,15 +45,20 @@
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                             <div class="accordion-body">
                                 <div class="description">
-                                    <p>Welcome! The goal of this map is to provide vistors and tourists a guide to essential
+                                    <p>Welcome! The goal of this map is to provide vistors and tourists a guide to
+                                        essential
                                         needs while they are out and about!</p>
-                                    <p>Need a restroom? Water fountain? Phone-charging station? Or perhaps after a long day
+                                    <p>Need a restroom? Water fountain? Phone-charging station? Or perhaps after a long
+                                        day
                                         touring the city, you want to find somewhere to sit and relax outside?</p>
                                 </div>
                                 <div class="description">
-                                    Use the <strong><i id="icon" class="fa-solid fa-magnifying-glass"></i>Search</strong> bar at the top left of the map to find the closest services to a specific location. 
+                                    Use the <strong><i id="icon"
+                                            class="fa-solid fa-magnifying-glass"></i>Search</strong> bar at the top left
+                                    of the map to find the closest services to a specific location.
                                     Use the <strong>Services</strong> section below to identify specific services.
-                                    <strong><i id="icon" class="fa-solid fa-hand-pointer"></i>Click</strong> the colored <strong>dots</strong> and colored <strong>plots</strong> on the map for more info.
+                                    <strong><i id="icon" class="fa-solid fa-hand-pointer"></i>Click</strong> the colored
+                                    <strong>dots</strong> and colored <strong>plots</strong> on the map for more info.
                                 </div>
                             </div>
                         </div>
@@ -61,26 +68,31 @@
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                                 aria-controls="panelsStayOpen-collapseTwo">
-                                <i id="accordion-icon" class="fa-solid fa-filter"></i><strong id="accordion-headers">Services</strong>
+                                <i id="accordion-icon" class="fa-solid fa-filter"></i><strong
+                                    id="accordion-headers">Services</strong>
                             </button>
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                             <div class="accordion-body">
                                 <div class="description">
-                                    The colors below correspond to the following services. <strong><i id="icon" class="fa-solid fa-hand-pointer"></i>Click</strong> the boxes and circles below to <strong>filter</strong> services on the map.
+                                    The colors below correspond to the following services. <strong><i id="icon"
+                                            class="fa-solid fa-hand-pointer"></i>Click</strong> the boxes and circles
+                                    below to <strong>filter</strong> services on the map.
                                 </div>
                                 <div class="filter-item">
                                     <div id="Parks" class="square active"></div>
                                     <span class="description">Parks</span>
                                 </div>
                                 <div class="filter-item">
-                                    <div id="Pedestrian Plazas" class="square active">
-                                    </div>
+                                    <div id="Pedestrian Plazas" class="square active"></div>
                                     <span class="description">Pedestrian Plazas</span>
                                 </div>
                                 <div class="filter-item">
-                                    <div id="Public Restrooms" class="circle active">
-                                    </div>
+                                    <div id="Privately Owned Public Spaces (POPS)" class="circle active"></div>
+                                    <span class="description">Privately Owned Public Spaces (POPS)</span>
+                                </div>
+                                <div class="filter-item">
+                                    <div id="Public Restrooms" class="circle active"></div>
                                     <span class="description">Public Restrooms</span>
                                 </div>
                                 <div class="filter-item">
@@ -97,7 +109,8 @@
                                 </div>
                                 <div class="filter-item">
                                     <div id="LinkNYC Kiosk" class="circle active"></div>
-                                    <span class="description">LinkNYC Kiosks (Wi-Fi, charging, <a href="https://www.link.nyc/" target="_blank">learn-more</a>)</span>
+                                    <span class="description">LinkNYC Kiosks (Wi-Fi, charging, <a
+                                            href="https://www.link.nyc/" target="_blank">learn-more</a>)</span>
                                 </div>
                             </div>
                         </div>
@@ -114,9 +127,10 @@
                             <div class="accordion-body">
                                 <div class="description">
                                     <p>Feel free to check out the
-                                        <a href="https://github.com/chlozhen/nyc-companion" target="_blank">Source Code and Data.</a>
+                                        <a href="https://github.com/chlozhen/nyc-companion" target="_blank">Source Code
+                                            and Data.</a>
                                         Or contact Chloe Zheng at chloez@nyu.edu with any comments or concerns.
-                                    </p>                                    
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +148,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <script src="js/scripts.js"></script>
 
 </body>

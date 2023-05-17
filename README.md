@@ -10,6 +10,7 @@ Webmap to locate essential needs! Find the closest: park, plaza, seat, restroom,
 All data was used at the time of download on May 17th, 2023 - data may have been updated since then.
 * [Parks Data](https://nycopendata.socrata.com/Recreation/Parks-Properties/enfh-gkve)
 * [Pedestrian Plazas](https://data.cityofnewyork.us/Transportation/NYC-DOT-Pedestrian-Plazas/k5k6-6jex)
+* [Privately Owned Public Spaces (POPS)](https://data.cityofnewyork.us/City-Government/Privately-Owned-Public-Spaces-POPS-/rvih-nhyn)
 * [Public Park Restrooms](https://data.cityofnewyork.us/Recreation/Directory-Of-Toilets-In-Public-Parks/hjae-yuav), [Automatic Public Toilets](https://data.cityofnewyork.us/dataset/Automatic-Public-Toilets/uzgy-xh4j)
 * [Street Seats](https://data.cityofnewyork.us/Transportation/Street-Seats-2014-2019/d83i-6us7)
 * [Benches](https://data.cityofnewyork.us/Transportation/City-Bench-Locations-Historical-/kuxa-tauh)
