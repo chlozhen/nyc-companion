@@ -6,16 +6,17 @@
 ### Description
 Webmap to locate essential needs! Find the closest: park, plaza, seat, restroom, water fountain, and Wi-Fi Kisok/charging stations. This is aimed at tourists, vistors, or resident hosts looking to find rest stops and services during a long day of exploring the city.
 
-### NYC Open Data
+### NYC Data
 All data was used at the time of download on May 17th, 2023 - data may have been updated since then.
-* [NYC Parks Data](https://nycopendata.socrata.com/Recreation/Parks-Properties/enfh-gkve)
-* [NYC Pedestrian Plazas Data](https://data.cityofnewyork.us/Transportation/NYC-DOT-Pedestrian-Plazas/k5k6-6jex)
-* [NYC Street Seats Data](https://data.cityofnewyork.us/Transportation/Street-Seats-2014-2019/d83i-6us7)
-* [NYC Benches Data](https://data.cityofnewyork.us/Transportation/City-Bench-Locations-Historical-/kuxa-tauh)
-* [NYC Water Fountains Data](https://data.cityofnewyork.us/Environment/NYC-Parks-Drinking-Fountains/622h-mkfu)
-* [NYC LinkNYC Kiosks Data](https://data.cityofnewyork.us/Social-Services/LinkNYC-Kiosk-Locations/s4kf-3yrf), more general info about [LinkNYC](https://www.link.nyc/)
+* [Parks Data](https://nycopendata.socrata.com/Recreation/Parks-Properties/enfh-gkve)
+* [Pedestrian Plazas](https://data.cityofnewyork.us/Transportation/NYC-DOT-Pedestrian-Plazas/k5k6-6jex)
+* [Public Park Restrooms](https://data.cityofnewyork.us/Recreation/Directory-Of-Toilets-In-Public-Parks/hjae-yuav), [Automatic Public Toilets](https://data.cityofnewyork.us/dataset/Automatic-Public-Toilets/uzgy-xh4j)
+* [Street Seats](https://data.cityofnewyork.us/Transportation/Street-Seats-2014-2019/d83i-6us7)
+* [Benches](https://data.cityofnewyork.us/Transportation/City-Bench-Locations-Historical-/kuxa-tauh)
+* [Park Water Fountains](https://data.cityofnewyork.us/Environment/NYC-Parks-Drinking-Fountains/622h-mkfu)
+* [LinkNYC Kiosks](https://data.cityofnewyork.us/Social-Services/LinkNYC-Kiosk-Locations/s4kf-3yrf), more general info about [LinkNYC](https://www.link.nyc/)
 
-For more NYC data, check out [NYC DOT Data Feeds](https://www.nyc.gov/html/dot/html/about/datafeeds.shtml)
+For more NYC data, check out [NYC DOT Data Feeds](https://www.nyc.gov/html/dot/html/about/datafeeds.shtml), [NYC Open Data](https://opendata.cityofnewyork.us/)
 
 ### Code
 * Adapted from Chris Whong's [tutorial](https://github.com/chriswhong/class-four-map/tree/main/data) for week 4 and Chloe Zheng's [week 4 project](https://github.com/chlozhen/webmap-nyc-outdoor-public-spaces)
